@@ -1,43 +1,42 @@
 "use client";
-import React, { useCallback, useState } from "react";
+import Editor from "@monaco-editor/react";
 import {
-  ReactFlow,
-  type Node,
-  type Edge,
-  type Connection,
-  addEdge,
-  Background,
-  Controls,
-  MiniMap,
-  useNodesState,
-  useEdgesState,
-  ConnectionLineType,
-  type NodeTypes,
-  BackgroundVariant,
-} from "@xyflow/react";
-import "@xyflow/react/dist/style.css";
-import {
-  Button,
-  Drawer,
   Box,
+  Button,
   Dialog,
-  DialogTitle,
   DialogContent,
+  DialogTitle,
+  Drawer,
   List,
-  ListItem,
+  ListItemButton,
   ListItemText,
-  Typography,
   Menu,
   MenuItem,
-  ListItemButton,
+  Typography,
 } from "@mui/material";
-import Editor from "@monaco-editor/react";
+import {
+  addEdge,
+  Background,
+  BackgroundVariant,
+  ConnectionLineType,
+  Controls,
+  MiniMap,
+  ReactFlow,
+  useEdgesState,
+  useNodesState,
+  type Connection,
+  type Edge,
+  type Node,
+  type NodeTypes,
+} from "@xyflow/react";
+import "@xyflow/react/dist/style.css";
+import React, { useCallback, useState } from "react";
 
-import TextNode from "@/components/flow/Nodes/TextNode";
-import GPIONode from "@/components/flow/Nodes/GPIONode";
-import ESPHomeNode from "@/components/flow/Nodes/ESPHomeNode";
-import SwitchNode from "@/components/flow/Nodes/SwitchNode";
 import BinarySensorNode from "@/components/flow/Nodes/BinarySensorNode";
+import ESPHomeNode from "@/components/flow/Nodes/ESPHomeNode";
+import GPIONode from "@/components/flow/Nodes/GPIONode";
+import SwitchNode from "@/components/flow/Nodes/SwitchNode";
+import TextNode from "@/components/flow/Nodes/TextNode";
 import { stringify } from "yaml";
 const configToYaml = (config: {
   name: string;
@@ -47,7 +46,7 @@ const configToYaml = (config: {
   switches?: Array<{ name: string; inverted: boolean; pin: string }>;
   sensors?: Array<{ name: string; pin: string }>;
 }) => {
-  const obj: any = {
+  const obj: Record<string, unknown> = {
     esphome: { name: config.name, platform: "ESP32", board: "esp32dev" },
     wifi: {
       ssid: "!secret wifi_ssid",
@@ -113,38 +112,38 @@ const Block = () => {
     [setEdges]
   );
 
-  const isValidConnection = (connection: Connection) => {
-    const sourceNode = nodes.find((node) => node.id === connection.source);
-    const targetNode = nodes.find((node) => node.id === connection.target);
+  // const isValidConnection = (connection: Connection) => {
+  //   const sourceNode = nodes.find((node) => node.id === connection.source);
+  //   const targetNode = nodes.find((node) => node.id === connection.target);
 
-    if (!sourceNode || !targetNode) return false;
+  //   if (!sourceNode || !targetNode) return false;
 
-    if (sourceNode.type === "textNode") return true;
-    if (
-      sourceNode.type === "gpioNode" &&
-      ["switchNode", "binarySensorNode"].includes(targetNode.type ?? "")
-    )
-      return true;
-    if (
-      sourceNode.type === "espHomeNode" &&
-      connection.sourceHandle === "switches" &&
-      targetNode.type === "switchNode"
-    )
-      return true;
-    if (
-      sourceNode.type === "espHomeNode" &&
-      connection.sourceHandle === "binary_sensors" &&
-      targetNode.type === "binarySensorNode"
-    )
-      return true;
-    if (
-      ["switchNode", "binarySensorNode"].includes(sourceNode.type ?? "") &&
-      targetNode.type === "gpioNode"
-    )
-      return true;
+  //   if (sourceNode.type === "textNode") return true;
+  //   if (
+  //     sourceNode.type === "gpioNode" &&
+  //     ["switchNode", "binarySensorNode"].includes(targetNode.type ?? "")
+  //   )
+  //     return true;
+  //   if (
+  //     sourceNode.type === "espHomeNode" &&
+  //     connection.sourceHandle === "switches" &&
+  //     targetNode.type === "switchNode"
+  //   )
+  //     return true;
+  //   if (
+  //     sourceNode.type === "espHomeNode" &&
+  //     connection.sourceHandle === "binary_sensors" &&
+  //     targetNode.type === "binarySensorNode"
+  //   )
+  //     return true;
+  //   if (
+  //     ["switchNode", "binarySensorNode"].includes(sourceNode.type ?? "") &&
+  //     targetNode.type === "gpioNode"
+  //   )
+  //     return true;
 
-    return false;
-  };
+  //   return false;
+  // };
 
   const addNode = (type: string) => {
     const newNode: Node = {

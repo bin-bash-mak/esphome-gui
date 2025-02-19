@@ -1,7 +1,7 @@
 import * as Blockly from "blockly/core";
 import blocks from "./blocks";
 
-export default () => {
+const init = () => {
   Blockly.defineBlocksWithJsonArray(blocks);
   // Blockly.Blocks[BlockTypes.GlobalDataSet] = {
   // 	init: function() {
@@ -15,3 +15,4 @@ export default () => {
   // 	}
   // };
 };
+export default init;

@@ -1,17 +1,17 @@
-import { memo } from "react";
-import { Handle, Position } from "@xyflow/react";
 import {
-  Select,
-  MenuItem,
   FormControl,
   InputLabel,
+  MenuItem,
   Paper,
+  Select,
   Tooltip,
 } from "@mui/material";
+import { Handle, Position } from "@xyflow/react";
+import { memo } from "react";
 
 const gpioOptions = ["GPIO0", "GPIO1", "GPIO2", "GPIO3", "GPIO4", "GPIO5"];
 
-function GPIONode({ data }: { data: { label: string } }) {
+function GPIONode({}: { data: { label: string } }) {
   return (
     <Paper
       elevation={3}

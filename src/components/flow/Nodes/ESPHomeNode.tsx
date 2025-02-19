@@ -1,20 +1,18 @@
-import React, { memo } from "react";
 import {
-  Handle,
+  Checkbox,
+  FormControlLabel,
+  FormGroup,
+  Paper,
+  TextField,
+  Typography,
+} from "@mui/material";
+import {
   Position,
   useReactFlow,
   type Node,
   type NodeProps,
 } from "@xyflow/react";
-import {
-  TextField,
-  Checkbox,
-  FormControlLabel,
-  FormGroup,
-  Paper,
-  Tooltip,
-  Typography,
-} from "@mui/material";
+import React, { memo } from "react";
 import { LabeledHandle } from "../common/Labeledhandle";
 
 const ESPHomeNode: React.FC<

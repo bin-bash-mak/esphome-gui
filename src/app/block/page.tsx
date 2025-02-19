@@ -1,9 +1,8 @@
 "use client";
-import React, { lazy, useEffect, useRef } from "react";
-import * as Blockly from "blockly/core";
-import { BlocklyWorkspace, useBlocklyWorkspace } from "react-blockly";
-import BlocksInitializer from "@/components/blocks/initializer";
 import blocks from "@/components/blocks/blocks";
+import BlocksInitializer from "@/components/blocks/initializer";
+// import * as Blockly from "blockly/core";
+import React, { lazy, useEffect, useRef } from "react";
 const BlocklyWorkspaceComponent = lazy(() =>
   import("react-blockly").then((m) => ({ default: m.BlocklyWorkspace }))
 );
@@ -18,16 +17,16 @@ const Blocks: React.FC = () => {
   useEffect(() => {
     if (workspaceRef.current) {
     }
-  }, [Blockly]);
+  }, []);
 
-  const handleJsonChange = (e: any) => {
-    console.log(e);
-  };
+  // const handleJsonChange = (e: never) => {
+  //   console.log(e);
+  // };
 
   return (
     <div style={{ width: "100vw", height: "100vh", display: "flex" }}>
       <BlocklyWorkspaceComponent
-        onJsonChange={handleJsonChange}
+        // onJsonChange={handleJsonChange}
         className={"my-blockly"}
         toolboxConfiguration={toolbox}
         workspaceConfiguration={{
@@ -38,7 +37,7 @@ const Blocks: React.FC = () => {
             snap: true,
           },
         }}
-        onInject={(workspace) => {
+        onInject={() => {
           console.log("Injected!");
         }}
       />

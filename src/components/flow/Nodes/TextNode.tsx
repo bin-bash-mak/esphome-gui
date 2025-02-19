@@ -1,4 +1,4 @@
-import React, { memo } from "react";
+import { Paper, TextField } from "@mui/material";
 import {
   Handle,
   NodeProps,
@@ -6,7 +6,7 @@ import {
   useReactFlow,
   type Node,
 } from "@xyflow/react";
-import { TextField, Paper, Tooltip } from "@mui/material";
+import React, { memo } from "react";
 
 const TextNode: React.FC<NodeProps<Node<{ text: string }>>> = ({
   id,

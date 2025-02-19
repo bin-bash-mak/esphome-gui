@@ -1,6 +1,6 @@
-import { memo } from "react";
+import { Paper, TextField, Typography } from "@mui/material";
 import { Handle, Position } from "@xyflow/react";
-import { TextField, Paper, Tooltip, Typography } from "@mui/material";
+import { memo } from "react";
 import { LabeledHandle } from "../common/Labeledhandle";
 
 function BinarySensorNode({ data }: { data: { label: string } }) {

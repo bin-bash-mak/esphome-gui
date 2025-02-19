@@ -1,6 +1,6 @@
 import { BlockTypes } from "./types";
 
-export default [
+const blocks = [
   // {
   // 	type: BlockTypes.GlobalDataSet,
   // 	message0: 'Задать переменную %1 = %2',
@@ -241,3 +241,4 @@ export default [
   // 	],
   // },
 ];
+export default blocks;
